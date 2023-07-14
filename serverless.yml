@@ -1,0 +1,42 @@
+service: assessment-task-eduqat
+app: assessment-task-eduqat
+org: willywilsen
+frameworkVersion: "3"
+provider:
+  name: aws
+  runtime: nodejs18.x
+functions:
+  createCourse:
+    handler: handler.createCourse
+    events:
+      - http:
+          path: courses
+          method: post
+
+  getCourses:
+    handler: handler.getCourses
+    events:
+      - http:
+          path: courses
+          method: get
+
+  getCourse:
+    handler: handler.getCourse
+    events:
+      - http:
+          path: courses/{courseId}
+          method: get
+
+  updateCourse:
+    handler: handler.updateCourse
+    events:
+      - http:
+          path: courses/{courseId}
+          method: put
+
+  deleteCourse:
+    handler: handler.deleteCourse
+    events:
+      - http:
+          path: courses/{courseId}
+          method: delete
